@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Тестер по HTML/CSS/JS</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по программированию</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Тест по HTML/CSS/JS</h1>
-    <div class="settings">
-      <label for="questionCount">Количество вопросов:</label>
-      <select id="questionCount">
-        <option value="20">20</option>
-        <option value="100">100</option>
-      </select>
-      <button onclick="startTest()">Начать тест</button>
+    <div class="container">
+        <h1>Тест: Python и Delphi</h1>
+
+        <div class="settings">
+            <label for="questionCount">Количество вопросов:</label>
+            <select id="questionCount">
+                <option value="20">20 (случайные)</option>
+                <option value="100">100 (все, в случайном порядке)</option>
+            </select>
+            <button onclick="startTest()">Начать тест</button>
+        </div>
+
+        <div id="quizContainer" class="hidden">
+            <div id="questionBox"></div>
+            <div id="optionsBox" class="options-grid"></div>
+            <button onclick="nextQuestion()" id="nextButton">Следующий вопрос</button>
+        </div>
+
+        <div id="resultContainer" class="hidden">
+            <h2>Результаты теста:</h2>
+            <div id="resultText"></div>
+            <div id="resultChartContainer">
+                <div id="resultChart"></div>
+                <div id="chartLegend">
+                    <span class="legend-item correct"></span> Правильно
+                    <span class="legend-item incorrect"></span> Неправильно
+                </div>
+            </div>
+            <div id="errors"></div>
+            <button onclick="restartTest()" id="restartButton">Пройти еще раз</button>
+        </div>
     </div>
 
-    <div id="quizContainer" class="hidden">
-      <div id="questionBox"></div>
-      <div id="optionsBox"></div>
-      <button id="nextBtn" onclick="nextQuestion()">Следующий</button>
-    </div>
-
-    <div id="result" class="hidden"></div>
-    <div id="errors" class="hidden"></div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
