@@ -1,80 +1,205 @@
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
     margin: 0;
     padding: 20px;
-  }
-  
-  .container {
-    max-width: 700px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Чтобы контейнер был сверху */
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  .settings {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  #questionBox {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  #optionsBox button {
-    display: block;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    margin: 5px 0;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
+    max-width: 700px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.settings {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #eee;
     border-radius: 5px;
-    background: #f9f9f9;
-    cursor: pointer;
-  }
-  
-  #optionsBox button:hover {
-    background: #e0e0e0;
-  }
-  
-  #nextBtn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1em;
-    background: #4CAF50;
+    background-color: #f9f9f9;
+}
+
+.settings label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.settings select, .settings button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.settings button {
+    background-color: #007bff;
     color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.settings button:hover {
+    background-color: #0056b3;
+}
+
+#questionBox {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    min-height: 50px; /* Для выравнивания */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Адаптивные колонки */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.options-grid button {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    padding: 12px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: left;
+}
+
+.options-grid button:hover:not(:disabled) {
+    background-color: #e2e6ea;
+    transform: translateY(-2px);
+}
+
+.options-grid button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#nextButton, #restartButton {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
     border: none;
     border-radius: 5px;
+    font-size: 1em;
     cursor: pointer;
-  }
-  
-  #nextBtn:hover {
-    background: #45a049;
-  }
-  
-  #result {
-    font-size: 1.3em;
-    text-align: center;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+#nextButton:hover, #restartButton:hover {
+    background-color: #218838;
+}
+
+#resultContainer h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#resultText {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e9f7ef;
+    border: 1px solid #c8e6c9;
+    border-radius: 5px;
+}
+
+#errors {
     margin-top: 20px;
-  }
-  
-  #errorList {
-    margin-top: 20px;
-  }
-  
-  #errorList li {
-    margin-bottom: 5px;
-  }
-  
+    text-align: left;
+    padding: 15px;
+    background-color: #fff3f3;
+    border: 1px solid #ffcdd2;
+    border-radius: 5px;
+}
+
+#errors h2 {
+    font-size: 1.1em;
+    color: #d32f2f;
+    margin-top: 0;
+}
+
+#errorList {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#errorList li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #ffe0e0;
+    font-size: 0.95em;
+}
+
+#errorList li:last-child {
+    border-bottom: none;
+}
+
+/* Стили для круговой диаграммы */
+#resultChartContainer {
+    margin: 20px auto;
+    width: 200px; /* Размер контейнера */
+    position: relative; /* Для позиционирования легенды, если нужно */
+}
+
+#resultChart {
+    width: 150px; /* Размер круга */
+    height: 150px;
+    border-radius: 50%;
+    /* Градиент будет установлен через JavaScript */
+    margin: 0 auto 10px auto; /* Центрирование и отступ снизу */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#chartLegend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.legend-item {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-left: 15px; /* Отступ между элементами легенды */
+}
+
+.legend-item.correct {
+    background-color: #4CAF50; /* Зеленый */
+}
+
+.legend-item.incorrect {
+    background-color: #F44336; /* Красный */
+}
+
+
+.hidden {
+    display: none !important; /* Важно для переопределения */
+}
