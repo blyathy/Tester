@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .settings {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #questionBox {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  #optionsBox button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  #optionsBox button:hover {
+    background: #e0e0e0;
+  }
+  
+  #nextBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #nextBtn:hover {
+    background: #45a049;
+  }
+  
+  #result {
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #errorList {
+    margin-top: 20px;
+  }
+  
+  #errorList li {
+    margin-bottom: 5px;
+  }
+  
